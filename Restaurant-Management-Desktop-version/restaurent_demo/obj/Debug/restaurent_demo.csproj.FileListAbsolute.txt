@@ -1,0 +1,46 @@
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.exe.config
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.exe
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.pdb
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.Form1.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.Properties.Resources.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csproj.GenerateResource.Cache
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csproj.CoreCompileInputs.cache
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.exe
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.pdb
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.HomeForm.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormItems.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormStaff.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.SalesUserControl.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.homeUserControl.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csprojResolveAssemblyReference.cache
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormSalesManagerView.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormItemManagerView.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormReservationManagerView.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormCustomer.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormStaffDetails.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormEdit.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormOrderStaff.resources
+C:\Users\hasib\source\repos\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormReserveStaff.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.exe.config
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.exe
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\bin\Debug\restaurent_demo.pdb
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csprojResolveAssemblyReference.cache
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.Form1.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormCustomer.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormEdit.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormItemManagerView.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormItems.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormOrderStaff.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormReservationManagerView.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormReserveStaff.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormSalesManagerView.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormStaff.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.FormStaffDetails.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.HomeForm.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.homeUserControl.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.Properties.Resources.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.salesUserControl.resources
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csproj.GenerateResource.Cache
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.csproj.CoreCompileInputs.cache
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.exe
+G:\WorkSpace\Visual Studio\Desktop\restaurent_demo\restaurent_demo\restaurent_demo\obj\Debug\restaurent_demo.pdb
