@@ -1,0 +1,67 @@
+﻿
+@model IEnumerable<RestaurantManagement.Models.TableDetails>
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "TableDetailsShow";
+}
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+      @*  @{ Html.RenderAction("SideMenu", "HomePage");}*@
+        
+        
+        <a href="@Url.Action("TableDetailsShow", "Reservation")" class="elements btn btn-danger">
+
+            <img src="~/Content/FirstPage Menu/table22.jpg" class="img-responsive" />
+            <h2>All Table Details</h2>
+        </a>
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+        
+        <div class="panel panel-body">
+            @{ 
+                if(Model.Count()>0)
+                {
+                    int i = 0;
+                    <table class="table table-bordered table-hover">
+                        <tr style="color:white; background-color:crimson;">
+                            <th class="text-center">No  </th>
+                            <th class="text-center">No of Chairs</th>
+                            <th class="text-center">Add in Cart</th>
+                        </tr>
+
+                        @foreach(var item in Model)
+                        {
+                            i = i + 1;
+                            <tr style="color:black; background-color:burlywood">
+                                <td class="text-center">@i</td>
+                                <td class="text-center">@item.Capacity</td>
+                                <td class="text-center"><a href="@Url.Action("TableCart", "Reservation", new { id = item.Table_Id })" class="elements btn btn-primary">Add in Cart</a></td>
+                            </tr>
+                        }
+
+                    </table>
+
+                }
+                else
+                {
+                    <h2>No Table Found</h2>
+                }
+            }
+
+        </div>
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+

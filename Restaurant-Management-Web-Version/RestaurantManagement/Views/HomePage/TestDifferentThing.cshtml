@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "TestDifferentThing";
+}
+
+<h2>TestDifferentThing</h2>
+@*
+<div id="game">
+    <button onClick="choose('rock')">Rock</button>
+    <button onClick="choose('paper')">Paper</button>
+    <button onClick="choose('scissors')">Scissors</button>
+    <div id="result"></div>
+    <br>
+    <br>
+    <button onClick="test()">DEBUG</button>
+</div>
+
+
+<script>
+    var user;
+    function choose(choice) {
+        user = choice;
+    }
+
+    function test(click) {
+        alert("You chossed " + user);
+    }
+</script>
+    *@
+
+<div>
+    @using (Html.BeginForm("ShopingCart", "HomePage",new { Id="12" }, FormMethod.Post))
+    {
+        @Html.Label("Enter Your Name")
+        @Html.TextBox("txtName")
+
+        <button class="btn btn-danger"><span class="glyphicon glyphicon-eye-open"></span>Submit</button>
+            
+       
+
+    }
+    @*ViewBag.Name*@
+</div>

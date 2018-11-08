@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Cart_id" />
+    </Key>
+    <Property Name="Cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cu_id" Type="int" Nullable="false" />
+    <Property Name="Tot_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="online_Onplase" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Time" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="image" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Sex" Type="varchar" MaxLength="10" />
+    <Property Name="Age" Type="int" />
+    <Property Name="image" Type="image" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Adress" Type="varchar" MaxLength="300" />
+    <Property Name="Sex" Type="varchar" MaxLength="10" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Type_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee_Type">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_name" Type="varchar" MaxLength="50" />
+    <Property Name="Salary" Type="int" />
+  </EntityType>
+  <EntityType Name="Ingradients">
+    <Key>
+      <PropertyRef Name="Ing_Id" />
+    </Key>
+    <Property Name="Ing_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quentity" Type="decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="image" Type="image" />
+  </EntityType>
+  <EntityType Name="Order_Details">
+    <Key>
+      <PropertyRef Name="Order_id" />
+    </Key>
+    <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cart_id" Type="int" Nullable="false" />
+    <Property Name="Item_id" Type="int" Nullable="false" />
+    <Property Name="Quentity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Cart_Make">
+    <Key>
+      <PropertyRef Name="Table_Cart_Id" />
+    </Key>
+    <Property Name="Table_Cart_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Date" Type="varchar" MaxLength="50" />
+    <Property Name="Start_time" Type="varchar" MaxLength="50" />
+    <Property Name="End_Time" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Table_Details">
+    <Key>
+      <PropertyRef Name="Table_Id" />
+    </Key>
+    <Property Name="Table_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Reservation">
+    <Key>
+      <PropertyRef Name="Reservation_id" />
+    </Key>
+    <Property Name="Reservation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Table_Cart_id" Type="int" Nullable="false" />
+    <Property Name="Table_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Upgrade_Ingredients">
+    <Key>
+      <PropertyRef Name="Upg_Id" />
+    </Key>
+    <Property Name="Upg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ing_Id" Type="int" Nullable="false" />
+    <Property Name="Employee_id" Type="int" Nullable="false" />
+    <Property Name="Quentity" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="Total_Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Cart_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="Cu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Employee_Type">
+    <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_Type">
+        <PropertyRef Name="Type_Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="CatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Cart">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+    <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Cart_id" />
+      </Principal>
+      <Dependent Role="Order_Details">
+        <PropertyRef Name="Cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order_Details">
+        <PropertyRef Name="Item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Cart_Make_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Table_Cart_Make" Type="Self.Table_Cart_Make" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Table_Cart_Make">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Reservation_Table_Cart_Make">
+    <End Role="Table_Cart_Make" Type="Self.Table_Cart_Make" Multiplicity="1" />
+    <End Role="Table_Reservation" Type="Self.Table_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Cart_Make">
+        <PropertyRef Name="Table_Cart_Id" />
+      </Principal>
+      <Dependent Role="Table_Reservation">
+        <PropertyRef Name="Table_Cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Reservation_Table_Details">
+    <End Role="Table_Details" Type="Self.Table_Details" Multiplicity="1" />
+    <End Role="Table_Reservation" Type="Self.Table_Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Details">
+        <PropertyRef Name="Table_Id" />
+      </Principal>
+      <Dependent Role="Table_Reservation">
+        <PropertyRef Name="Table_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Upgrade_Ingredients_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Upgrade_Ingredients" Type="Self.Upgrade_Ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Upgrade_Ingredients">
+        <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Upgrade_Ingredients_Ingradients">
+    <End Role="Ingradients" Type="Self.Ingradients" Multiplicity="1" />
+    <End Role="Upgrade_Ingredients" Type="Self.Upgrade_Ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingradients">
+        <PropertyRef Name="Ing_Id" />
+      </Principal>
+      <Dependent Role="Upgrade_Ingredients">
+        <PropertyRef Name="Ing_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantModelStoreContainer">
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingradients" EntityType="Self.Ingradients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Details" EntityType="Self.Order_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Cart_Make" EntityType="Self.Table_Cart_Make" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Details" EntityType="Self.Table_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Reservation" EntityType="Self.Table_Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Upgrade_Ingredients" EntityType="Self.Upgrade_Ingredients" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cart_Customer" Association="Self.FK_Cart_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Employee_Type" Association="Self.FK_Employee_Employee_Type">
+      <End Role="Employee_Type" EntitySet="Employee_Type" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Cart" Association="Self.FK_Order_Cart">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="Order_Details" EntitySet="Order_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Item" Association="Self.FK_Order_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="Order_Details" EntitySet="Order_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Cart_Make_Customer" Association="Self.FK_Table_Cart_Make_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Reservation_Table_Cart_Make" Association="Self.FK_Table_Reservation_Table_Cart_Make">
+      <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+      <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Reservation_Table_Details" Association="Self.FK_Table_Reservation_Table_Details">
+      <End Role="Table_Details" EntitySet="Table_Details" />
+      <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Upgrade_Ingredients_Employee" Association="Self.FK_Upgrade_Ingredients_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Upgrade_Ingredients_Ingradients" Association="Self.FK_Upgrade_Ingredients_Ingradients">
+      <End Role="Ingradients" EntitySet="Ingradients" />
+      <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

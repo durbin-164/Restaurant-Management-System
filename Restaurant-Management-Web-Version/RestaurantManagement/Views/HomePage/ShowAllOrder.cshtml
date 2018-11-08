@@ -1,0 +1,86 @@
+﻿@model IEnumerable<RestaurantManagement.Models.CartViewModel>
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "ShowAllOrder";
+}
+
+@using RestaurantManagement.Models
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-9">
+        @*Body Start*@
+
+        <div class="panel panel-body">
+           @{ 
+               List<CartViewModel> list = (List<CartViewModel>)Model;
+               int sz = list.Count;
+
+               if(sz>0)
+               {
+                   int xx = 0;
+                   <table class="table table-bordered table-hover">
+                       <tr style="color:white; background-color:crimson;">
+                           <th class="text-center">NO</th>
+                           <th class="text-center">View Details</th>
+                           <th class="text-center">Status</th>
+                           <th class="text-center">Total Price</th>
+                           <th class="text-center">Place</th>
+                           <th class="text-center">Date</th>
+                       </tr>
+
+                       @for(int i=sz-1;i>=0;i--)
+                       {
+                           xx += 1;
+                           var item = list[i];
+
+                           <tr style="color:black; background-color:burlywood">
+                               <td class="text-center">@xx</td>
+                               <td class="text-center"><a href="@Url.Action("ShowOneOrderDeatails", "HomePage", new { id =item.Cart_id })" class="elements btn btn-success">
+                                    <span class="glyphicon glyphicon-eye-open"></span>View Details
+                                    </a>
+                               </td>
+
+                               <td class="text-center">@item.Status</td>
+                               <td class="text-center">@item.Tot_price</td>
+                               <td class="text-center">@item.online_Onplase</td>
+                               <td class="text-center">@item.Date</td>
+                           </tr>
+
+                       }
+                   </table>
+
+               }
+               else
+               {
+                   <h2>No Item Found</h2>
+               }
+
+           }
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        @*Body Finished*@
+    </div>
+   @* <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>*@
+</div>
+
+

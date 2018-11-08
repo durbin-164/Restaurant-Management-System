@@ -1,0 +1,104 @@
+﻿
+@model IEnumerable<RestaurantManagement.Models.ItemViewModel>
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "CatShow";
+
+}
+
+
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*This Body*@
+
+        <div class="panel panel-default">
+            <div class="panel-success">
+                <div class="panel-heading">
+                    <h3>Different foods</h3>
+                </div>
+                <div class="panel-body">
+
+                    @{
+
+                        int tot = 0;
+                        var list = Model.ToList();
+                        int sz = list.Count;
+
+                        if (sz!=0)
+                        {
+                            while (tot < sz)
+                            {
+                                 <div class="panel panel-body">
+
+
+                                    @for (int j = 0; tot < sz && j < 3; tot++, j++)
+                                    {
+
+                                        <div class="col-sm-4">
+                                            <div class="thumbnail">
+                                                @if (list[tot].image == null)
+                                                {
+                                                    <img src="~/Content/Foods/barger2.jpg" class="img-responsive" />
+
+                                                }
+                                                else
+                                                {
+                                                    var base64 = Convert.ToBase64String(list[tot].image);
+                                                    var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+
+                                                    <img src='@imgSrc' class="img-responsive" />
+                                                }
+
+
+                                            </div>
+                                            <div class="caption">
+                                                <h4>Name : :@list[tot].Name</h4>
+                                                <h4 style="color:darkblue">Price::@list[tot].Price</h4>
+
+                                               @* <button class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span>View Details </button>*@
+                                                <a href="@Url.Action("DetailsItem", "HomePage", new { id =list[tot].Id })" class="elements btn btn-success">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>View Details
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+
+                            <div class="panel panel-body">
+                                <h2>No Item Found</h2>
+
+                            </div>
+
+                        }
+                    }
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+
+        @*This body finihed*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+
+

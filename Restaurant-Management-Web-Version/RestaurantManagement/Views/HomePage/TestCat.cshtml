@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "TestCat";
+}
+
+<div class="col-md-9">
+    <table class="display" id="MyDataTable">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+        $(document).ready(function () {
+
+            // $("#MyDataTable").DataTable();
+
+            GetCategory()
+        })
+        var GetCategory = function () {
+
+            $.ajax({
+
+                type: "Get",
+                url: "/HomePage/GetCategory",
+                success: function (response) {
+
+                    BindDataTable(response);
+
+                }
+            })
+
+        }
+
+
+        var BindDataTable = function (response) {
+
+            $("#MyDataTable").DataTable({
+
+                "aaData": response,
+                "aoColumns": [
+
+                    { "mData": "Id" },
+                    { "mData": "Name" },
+                    
+                ]
+
+            });
+        }
+
+
+</script>
+

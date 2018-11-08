@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "TableCart";
+}
+
+@using RestaurantManagement.Models
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+       @* @{ Html.RenderAction("SideMenu", "HomePage");}*@
+
+        
+        <a href="@Url.Action("TableDetailsShow", "Reservation")" class="elements btn btn-danger">
+
+            <img src="~/Content/FirstPage Menu/table22.jpg" class="img-responsive" />
+            <h2>All Table Details</h2>
+        </a>
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+        @{ 
+            List<TableCartCreateViewModel> list = (List<TableCartCreateViewModel>)Session["table"];
+            
+            if(list != null && list.Count>0)
+            {
+                int i = 0;
+                <table class="table table-bordered table-hover">
+                    <tr style="color:white; background-color:crimson;">
+                        <th class="text-center">NO</th>
+                        <th class="text-center">Capacity</th>
+                        <th class="text-center">Delete</th>
+                        
+                    </tr>
+                    @foreach(var item in list)
+                    {
+                        i += 1;
+                        <tr style="color:black; background-color:burlywood">
+                            <td class="text-center">@i</td>
+                            <td class="text-center">@item.Capacity</td>
+                            <td class="text-center"><a href="@Url.Action("DeleteCartTableItem", "Reservation", new { id = item.Table_Id })" class="elements btn btn-primary">Delete</a></td>
+
+                        </tr>
+                    }
+                </table>
+
+                <hr />
+                <hr />
+                <hr />
+
+                <div class="panel panel-body">
+
+                   @using (Html.BeginForm("MakeReservation", "Reservation", FormMethod.Post))
+                   {
+                        @Html.Label(" Date  :   ", null, new { @class = "btn btn-primary" });<text> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</text>
+
+                       @Html.TextBox("date")
+                        <br />
+                        <br />
+                        @Html.Label("Start Time :  ", null, new { @class = "btn btn-primary" });  <text>&nbsp; </text>
+                        @Html.TextBox("Stime")
+                        <br />
+                        <br />
+                        @Html.Label("End Time :  ", null, new { @class = "btn btn-primary" }); <text> &nbsp; </text>
+                        @Html.TextBox("Etime")
+                        <br />
+                        <br />
+                       
+
+                        <button class="btn btn-danger"><span class="glyphicon glyphicon-eye-open"></span>Reserve Now</button>
+
+                    }
+
+                </div>
+
+            }
+            else
+            {
+                <h1>No Item Found</h1>
+            }
+        }
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+

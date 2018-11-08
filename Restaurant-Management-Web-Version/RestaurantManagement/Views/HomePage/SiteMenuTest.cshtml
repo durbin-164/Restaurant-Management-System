@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "SiteMenuTest";
+}
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+
+
+
+       
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+

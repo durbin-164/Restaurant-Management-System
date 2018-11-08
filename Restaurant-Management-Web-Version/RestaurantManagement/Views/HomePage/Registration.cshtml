@@ -1,0 +1,122 @@
+﻿@model RestaurantManagement.Models.RegistrationViewModel
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "Registration";
+}
+
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+        <hr />
+        <hr />
+        <div class="panel panel-default">
+            <div class="panel-danger">
+                <div class="panel-heading">
+                    <h2>WELCOME, PLEASE SIGN UP</h2>
+
+                </div>
+                <div class="panel-body">
+                    <form id="RegForm">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "User Name" })
+
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @placeholder = "Phone Number" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Id" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.PasswordConform, new { @class = "form-control", @placeholder = "Conform Password" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+
+                                <a href="#" class="elements btn btn-primary" onclick="RegisterUser()">Submit</a>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    var RegisterUser = function () {
+        debugger
+        var data = $("#RegForm").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/HomePage/RegistrationCustomer",
+            data: data,
+            success: function (response) {
+
+                alert("Registration Successful");
+
+            }
+
+
+
+        })
+
+
+
+    }
+
+</script>
+
+
+

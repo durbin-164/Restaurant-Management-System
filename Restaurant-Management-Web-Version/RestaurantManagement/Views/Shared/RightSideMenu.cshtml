@@ -1,0 +1,106 @@
+﻿@using RestaurantManagement.Models
+
+<div class=" panel panel-default" style="background-color:#e2f0f7">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h3>Shopping Cart</h3>
+        </div>
+        <div class="panel panel-body">
+            
+
+            @{ 
+                List<CartCreateViewModel> list = (List<CartCreateViewModel>)Session["cart"];
+
+                if(list!=null && list.Count>0)
+                {
+                    decimal totalPrice = 0;
+
+                    <table class="table table-bordered table-hover">
+                        <tr style="color:white; background-color:crimson;">
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Quentity</th>
+                            <th class="text-center">Price</th>
+                        </tr>
+
+                        @foreach(var item in list)
+                        {
+                            totalPrice += item.Tot_price;
+                            <tr style="color:black; background-color:burlywood">
+                                <td class="text-center"><a href="@Url.Action("DetailsItem", "HomePage", new { id =item.ItemId })" style="color:darkblue">@item.ItemName</a></td>
+                                <td class="text-center">@item.Quentity</td>
+                                <td class="text-center">@item.Tot_price</td>
+                            </tr>
+                        }
+
+                    </table>
+                    <hr />
+                    <h3 style="color:crimson">Total : @totalPrice</h3>
+
+                }
+                else
+                {
+                    <h2>No item in Cart</h2>
+                }
+
+            }
+            <hr />
+            
+
+            <a href="@Url.Action("ShopingCartView", "HomePage")" class="elements btn btn-success">View Cart</a>
+            <a href="@Url.Action("ShowAllOrder", "HomePage")" class="elements btn btn-success">View All Order</a>
+
+           
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h3>Reservation Cart</h3>
+        </div>
+        <div class="panel panel-body">
+           
+
+            @{
+
+                List<TableCartCreateViewModel> tableList = (List<TableCartCreateViewModel>)Session["table"];
+
+                if (tableList != null && tableList.Count > 0)
+                {
+                    int i = 0;
+                    <table class="table table-bordered table-hover">
+                        <tr style="color:white; background-color:crimson;">
+                            <th class="text-center">NO</th>
+                            <th class="text-center">Capacity</th>
+                            <th class="text-center">Delete</th>
+
+                        </tr>
+                        @foreach (var item in tableList)
+                        {
+                            i += 1;
+                            <tr style="color:black; background-color:burlywood">
+                                <td class="text-center">@i</td>
+                                <td class="text-center">@item.Capacity</td>
+                                <td class="text-center"><a href="@Url.Action("DeleteCartTableItem", "Reservation", new { id = item.Table_Id })" class="elements btn btn-primary">Delete</a></td>
+
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <h2>No item in Cart</h2>
+                }
+
+
+
+            }
+
+            <hr />
+
+            <a href="@Url.Action("ViewTableCart", "Reservation")" class="elements btn btn-success">View Table Cart</a>
+           
+
+        </div>
+    </div>
+
+</div>

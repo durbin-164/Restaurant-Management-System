@@ -1,0 +1,85 @@
+﻿@model IEnumerable<RestaurantManagement.Models.OrderShowViewModel>
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "ShowOneOrderDeatails";
+}
+
+
+
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+        <div class="panel panel-body">
+            @{
+
+                int sz = Model.Count();
+
+
+                if (sz > 0)
+                {
+                    int xx = 0;
+                    Decimal totPrice = 0;
+                    String Address = "";
+                    <table class="table table-bordered table-hover text-center">
+                        <tr style="color:white; background-color:crimson;">
+                            <th class="text-center">NO</th>
+                            <th class="text-center">item Name</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Date</th>
+                        </tr>
+
+                        @foreach(var item in Model)
+                        {
+                            Address = item.Address;
+                            totPrice += item.Price;
+                            xx += 1;
+                            <tr  style="color:black; background-color:burlywood">
+                                <td class="text-center">@xx</td>
+                                <td class="text-center"><a href="@Url.Action("DetailsItem", "HomePage", new { id =item.Item_id })" style="color:red">@item.Item_name</a></td>
+                                <td class="text-center">@item.Quentity</td>
+                                <td class="text-center">@item.Price</td>
+                                <td class="text-center">@item.Date</td>
+                            </tr>
+                        }
+                    </table>
+
+                    <hr/>
+                    <hr />
+                    <h2>Total Price: @totPrice</h2>
+
+                    if (Address != null || Address != "")
+                    {
+                        <h3>Address : @Address</h3>
+                    }
+
+
+
+
+                }
+                else
+                {
+                    <h2>No Item Found</h2>
+                }
+
+            }
+
+        </div>
+
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+

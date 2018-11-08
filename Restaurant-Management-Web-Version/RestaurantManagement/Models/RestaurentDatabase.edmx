@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Cart_id" />
+          </Key>
+          <Property Name="Cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cu_id" Type="int" Nullable="false" />
+          <Property Name="Tot_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="online_Onplase" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Time" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="Age" Type="int" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Adress" Type="varchar" MaxLength="300" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_name" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" />
+        </EntityType>
+        <EntityType Name="Ingradients">
+          <Key>
+            <PropertyRef Name="Ing_Id" />
+          </Key>
+          <Property Name="Ing_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quentity" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cart_id" Type="int" Nullable="false" />
+          <Property Name="Item_id" Type="int" Nullable="false" />
+          <Property Name="Quentity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Cart_Make">
+          <Key>
+            <PropertyRef Name="Table_Cart_Id" />
+          </Key>
+          <Property Name="Table_Cart_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Start_time" Type="varchar" MaxLength="50" />
+          <Property Name="End_Time" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_Details">
+          <Key>
+            <PropertyRef Name="Table_Id" />
+          </Key>
+          <Property Name="Table_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Reservation">
+          <Key>
+            <PropertyRef Name="Reservation_id" />
+          </Key>
+          <Property Name="Reservation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Table_Cart_id" Type="int" Nullable="false" />
+          <Property Name="Table_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Upgrade_Ingredients">
+          <Key>
+            <PropertyRef Name="Upg_Id" />
+          </Key>
+          <Property Name="Upg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ing_Id" Type="int" Nullable="false" />
+          <Property Name="Employee_id" Type="int" Nullable="false" />
+          <Property Name="Quentity" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Price" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Cart_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Cu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Employee_Type">
+          <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Cart">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="Cart_id" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="Cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Order_Details" Type="Self.Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Cart_Make_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Table_Cart_Make" Type="Self.Table_Cart_Make" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Cart_Make">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Reservation_Table_Cart_Make">
+          <End Role="Table_Cart_Make" Type="Self.Table_Cart_Make" Multiplicity="1" />
+          <End Role="Table_Reservation" Type="Self.Table_Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Cart_Make">
+              <PropertyRef Name="Table_Cart_Id" />
+            </Principal>
+            <Dependent Role="Table_Reservation">
+              <PropertyRef Name="Table_Cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Reservation_Table_Details">
+          <End Role="Table_Details" Type="Self.Table_Details" Multiplicity="1" />
+          <End Role="Table_Reservation" Type="Self.Table_Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Details">
+              <PropertyRef Name="Table_Id" />
+            </Principal>
+            <Dependent Role="Table_Reservation">
+              <PropertyRef Name="Table_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upgrade_Ingredients_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Upgrade_Ingredients" Type="Self.Upgrade_Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Upgrade_Ingredients">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upgrade_Ingredients_Ingradients">
+          <End Role="Ingradients" Type="Self.Ingradients" Multiplicity="1" />
+          <End Role="Upgrade_Ingredients" Type="Self.Upgrade_Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingradients">
+              <PropertyRef Name="Ing_Id" />
+            </Principal>
+            <Dependent Role="Upgrade_Ingredients">
+              <PropertyRef Name="Ing_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingradients" EntityType="Self.Ingradients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Details" EntityType="Self.Order_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Cart_Make" EntityType="Self.Table_Cart_Make" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Details" EntityType="Self.Table_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Reservation" EntityType="Self.Table_Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Upgrade_Ingredients" EntityType="Self.Upgrade_Ingredients" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cart_Customer" Association="Self.FK_Cart_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Employee_Type" Association="Self.FK_Employee_Employee_Type">
+            <End Role="Employee_Type" EntitySet="Employee_Type" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category" Association="Self.FK_Item_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Cart" Association="Self.FK_Order_Cart">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Item" Association="Self.FK_Order_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Cart_Make_Customer" Association="Self.FK_Table_Cart_Make_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Reservation_Table_Cart_Make" Association="Self.FK_Table_Reservation_Table_Cart_Make">
+            <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+            <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Reservation_Table_Details" Association="Self.FK_Table_Reservation_Table_Details">
+            <End Role="Table_Details" EntitySet="Table_Details" />
+            <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upgrade_Ingredients_Employee" Association="Self.FK_Upgrade_Ingredients_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upgrade_Ingredients_Ingradients" Association="Self.FK_Upgrade_Ingredients_Ingradients">
+            <End Role="Ingradients" EntitySet="Ingradients" />
+            <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="RestaurantModel.FK_Item_Category" FromRole="Category" ToRole="Item" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="RestaurantModel.FK_Cart_Customer" FromRole="Customer" ToRole="Cart" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Table_Cart_Make" Relationship="RestaurantModel.FK_Table_Cart_Make_Customer" FromRole="Customer" ToRole="Table_Cart_Make" />
+        </EntityType>
+        <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Items" EntityType="RestaurantModel.Item" />
+          <AssociationSet Name="FK_Item_Category" Association="RestaurantModel.FK_Item_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <EntitySet Name="Carts" EntityType="RestaurantModel.Cart" />
+          <AssociationSet Name="FK_Cart_Customer" Association="RestaurantModel.FK_Cart_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <EntitySet Name="Employee_Type" EntityType="RestaurantModel.Employee_Type" />
+          <EntitySet Name="Ingradients" EntityType="RestaurantModel.Ingradient" />
+          <EntitySet Name="Order_Details" EntityType="RestaurantModel.Order_Details" />
+          <EntitySet Name="Table_Details" EntityType="RestaurantModel.Table_Details" />
+          <EntitySet Name="Upgrade_Ingredients" EntityType="RestaurantModel.Upgrade_Ingredients" />
+          <AssociationSet Name="FK_Order_Cart1" Association="RestaurantModel.FK_Order_Cart1">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upgrade_Ingredients_Ingradients" Association="RestaurantModel.FK_Upgrade_Ingredients_Ingradients">
+            <End Role="Ingradient" EntitySet="Ingradients" />
+            <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Item1" Association="RestaurantModel.FK_Order_Item1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Order_Details" EntitySet="Order_Details" />
+          </AssociationSet>
+          <EntitySet Name="Table_Reservation" EntityType="RestaurantModel.Table_Reservation" />
+          <AssociationSet Name="FK_Table_Reservation_Table_Details" Association="RestaurantModel.FK_Table_Reservation_Table_Details">
+            <End Role="Table_Details" EntitySet="Table_Details" />
+            <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+          </AssociationSet>
+          <EntitySet Name="Table_Cart_Make" EntityType="RestaurantModel.Table_Cart_Make" />
+          <AssociationSet Name="FK_Table_Cart_Make_Customer" Association="RestaurantModel.FK_Table_Cart_Make_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Reservation_Table_Cart_Make" Association="RestaurantModel.FK_Table_Reservation_Table_Cart_Make">
+            <End Role="Table_Cart_Make" EntitySet="Table_Cart_Make" />
+            <End Role="Table_Reservation" EntitySet="Table_Reservation" />
+          </AssociationSet>
+          <EntitySet Name="Employees" EntityType="RestaurantModel.Employee" />
+          <AssociationSet Name="FK_Employee_Employee_Type" Association="RestaurantModel.FK_Employee_Employee_Type">
+            <End Role="Employee_Type" EntitySet="Employee_Type" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Upgrade_Ingredients_Employee" Association="RestaurantModel.FK_Upgrade_Ingredients_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Upgrade_Ingredients" EntitySet="Upgrade_Ingredients" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="RestaurantModel.FK_Item_Category" FromRole="Item" ToRole="Category" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Order_Details" Relationship="RestaurantModel.FK_Order_Item1" FromRole="Item" ToRole="Order_Details" />
+        </EntityType>
+        <Association Name="FK_Item_Category">
+          <End Type="RestaurantModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="RestaurantModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Cart_id" />
+          </Key>
+          <Property Name="Cart_id" Type="Int32" Nullable="false" />
+          <Property Name="Cu_id" Type="Int32" Nullable="false" />
+          <Property Name="Tot_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="online_Onplase" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <NavigationProperty Name="Customer" Relationship="RestaurantModel.FK_Cart_Customer" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="Order_Details" Relationship="RestaurantModel.FK_Order_Cart1" FromRole="Cart" ToRole="Order_Details" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Cart_Customer">
+          <End Type="RestaurantModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="RestaurantModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Cu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employee_Type">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="RestaurantModel.FK_Employee_Employee_Type" FromRole="Employee_Type" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Ingradient">
+          <Key>
+            <PropertyRef Name="Ing_Id" />
+          </Key>
+          <Property Name="Ing_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quentity" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="Upgrade_Ingredients" Relationship="RestaurantModel.FK_Upgrade_Ingredients_Ingradients" FromRole="Ingradient" ToRole="Upgrade_Ingredients" />
+        </EntityType>
+        <EntityType Name="Order_Details">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cart_id" Type="Int32" Nullable="false" />
+          <Property Name="Item_id" Type="Int32" Nullable="false" />
+          <Property Name="Quentity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Cart" Relationship="RestaurantModel.FK_Order_Cart1" FromRole="Order_Details" ToRole="Cart" />
+          <NavigationProperty Name="Item" Relationship="RestaurantModel.FK_Order_Item1" FromRole="Order_Details" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Table_Details">
+          <Key>
+            <PropertyRef Name="Table_Id" />
+          </Key>
+          <Property Name="Table_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Reservation" Relationship="RestaurantModel.FK_Table_Reservation_Table_Details" FromRole="Table_Details" ToRole="Table_Reservation" />
+        </EntityType>
+        <EntityType Name="Upgrade_Ingredients">
+          <Key>
+            <PropertyRef Name="Upg_Id" />
+          </Key>
+          <Property Name="Upg_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ing_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employee_id" Type="Int32" Nullable="false" />
+          <Property Name="Quentity" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ingradient" Relationship="RestaurantModel.FK_Upgrade_Ingredients_Ingradients" FromRole="Upgrade_Ingredients" ToRole="Ingradient" />
+          <NavigationProperty Name="Employee" Relationship="RestaurantModel.FK_Upgrade_Ingredients_Employee" FromRole="Upgrade_Ingredients" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Order_Cart1">
+          <End Type="RestaurantModel.Cart" Role="Cart" Multiplicity="1" />
+          <End Type="RestaurantModel.Order_Details" Role="Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="Cart_id" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="Cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upgrade_Ingredients_Ingradients">
+          <End Type="RestaurantModel.Ingradient" Role="Ingradient" Multiplicity="1" />
+          <End Type="RestaurantModel.Upgrade_Ingredients" Role="Upgrade_Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingradient">
+              <PropertyRef Name="Ing_Id" />
+            </Principal>
+            <Dependent Role="Upgrade_Ingredients">
+              <PropertyRef Name="Ing_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Item1">
+          <End Type="RestaurantModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="RestaurantModel.Order_Details" Role="Order_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order_Details">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Table_Reservation">
+          <Key>
+            <PropertyRef Name="Reservation_id" />
+          </Key>
+          <Property Name="Reservation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Table_Cart_id" Type="Int32" Nullable="false" />
+          <Property Name="Table_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Details" Relationship="RestaurantModel.FK_Table_Reservation_Table_Details" FromRole="Table_Reservation" ToRole="Table_Details" />
+          <NavigationProperty Name="Table_Cart_Make" Relationship="RestaurantModel.FK_Table_Reservation_Table_Cart_Make" FromRole="Table_Reservation" ToRole="Table_Cart_Make" />
+        </EntityType>
+        <Association Name="FK_Table_Reservation_Table_Details">
+          <End Type="RestaurantModel.Table_Details" Role="Table_Details" Multiplicity="1" />
+          <End Type="RestaurantModel.Table_Reservation" Role="Table_Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Details">
+              <PropertyRef Name="Table_Id" />
+            </Principal>
+            <Dependent Role="Table_Reservation">
+              <PropertyRef Name="Table_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Table_Cart_Make">
+          <Key>
+            <PropertyRef Name="Table_Cart_Id" />
+          </Key>
+          <Property Name="Table_Cart_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Start_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="End_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="RestaurantModel.FK_Table_Cart_Make_Customer" FromRole="Table_Cart_Make" ToRole="Customer" />
+          <NavigationProperty Name="Table_Reservation" Relationship="RestaurantModel.FK_Table_Reservation_Table_Cart_Make" FromRole="Table_Cart_Make" ToRole="Table_Reservation" />
+        </EntityType>
+        <Association Name="FK_Table_Cart_Make_Customer">
+          <End Type="RestaurantModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="RestaurantModel.Table_Cart_Make" Role="Table_Cart_Make" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_Cart_Make">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Reservation_Table_Cart_Make">
+          <End Type="RestaurantModel.Table_Cart_Make" Role="Table_Cart_Make" Multiplicity="1" />
+          <End Type="RestaurantModel.Table_Reservation" Role="Table_Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Cart_Make">
+              <PropertyRef Name="Table_Cart_Id" />
+            </Principal>
+            <Dependent Role="Table_Reservation">
+              <PropertyRef Name="Table_Cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Adress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee_Type" Relationship="RestaurantModel.FK_Employee_Employee_Type" FromRole="Employee" ToRole="Employee_Type" />
+          <NavigationProperty Name="Upgrade_Ingredients" Relationship="RestaurantModel.FK_Upgrade_Ingredients_Employee" FromRole="Employee" ToRole="Upgrade_Ingredients" />
+        </EntityType>
+        <Association Name="FK_Employee_Employee_Type">
+          <End Type="RestaurantModel.Employee_Type" Role="Employee_Type" Multiplicity="1" />
+          <End Type="RestaurantModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Type">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Upgrade_Ingredients_Employee">
+          <End Type="RestaurantModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="RestaurantModel.Upgrade_Ingredients" Role="Upgrade_Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_Id" />
+            </Principal>
+            <Dependent Role="Upgrade_Ingredients">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RestaurantModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="RestaurantModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="RestaurantModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="RestaurantModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="online_Onplase" ColumnName="online_Onplase" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Tot_price" ColumnName="Tot_price" />
+                <ScalarProperty Name="Cu_id" ColumnName="Cu_id" />
+                <ScalarProperty Name="Cart_id" ColumnName="Cart_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Type">
+            <EntityTypeMapping TypeName="RestaurantModel.Employee_Type">
+              <MappingFragment StoreEntitySet="Employee_Type">
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Type_name" ColumnName="Type_name" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingradients">
+            <EntityTypeMapping TypeName="RestaurantModel.Ingradient">
+              <MappingFragment StoreEntitySet="Ingradients">
+                <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Ing_Id" ColumnName="Ing_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Details">
+            <EntityTypeMapping TypeName="RestaurantModel.Order_Details">
+              <MappingFragment StoreEntitySet="Order_Details">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Cart_id" ColumnName="Cart_id" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Details">
+            <EntityTypeMapping TypeName="RestaurantModel.Table_Details">
+              <MappingFragment StoreEntitySet="Table_Details">
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Table_Id" ColumnName="Table_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Upgrade_Ingredients">
+            <EntityTypeMapping TypeName="RestaurantModel.Upgrade_Ingredients">
+              <MappingFragment StoreEntitySet="Upgrade_Ingredients">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Quentity" ColumnName="Quentity" />
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+                <ScalarProperty Name="Ing_Id" ColumnName="Ing_Id" />
+                <ScalarProperty Name="Upg_Id" ColumnName="Upg_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Reservation">
+            <EntityTypeMapping TypeName="RestaurantModel.Table_Reservation">
+              <MappingFragment StoreEntitySet="Table_Reservation">
+                <ScalarProperty Name="Table_Id" ColumnName="Table_Id" />
+                <ScalarProperty Name="Table_Cart_id" ColumnName="Table_Cart_id" />
+                <ScalarProperty Name="Reservation_id" ColumnName="Reservation_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Cart_Make">
+            <EntityTypeMapping TypeName="RestaurantModel.Table_Cart_Make">
+              <MappingFragment StoreEntitySet="Table_Cart_Make">
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Start_time" ColumnName="Start_time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Table_Cart_Id" ColumnName="Table_Cart_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="RestaurantModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

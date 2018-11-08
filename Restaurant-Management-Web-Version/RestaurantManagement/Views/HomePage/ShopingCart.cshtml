@@ -1,0 +1,146 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "ShopingCart";
+}
+@using RestaurantManagement.Models
+@model RestaurantManagement.Models.CartModel
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+        <div class="panel panel-body">
+            @if (Session["cart"] != null)
+            {
+                <table class="table table-bordered table-hover">
+                    <tr style="color:white; background-color:crimson;">
+                        <th class="text-center">No</th>
+                        <th class="text-center">Item Name</th>
+                        <th class="text-center">Quentity</th>
+                        <th class="text-center">Total Price</th>
+                        <th class="text-center">Remove Item</th>
+                    </tr>
+
+
+                    @{
+
+                        List<CartCreateViewModel> lsit = (List<CartCreateViewModel>)Session["cart"];
+                        int i = 0;
+                        decimal totalPrice = 0;
+
+                        foreach (var item in lsit)
+                        {
+                            totalPrice += item.Tot_price;
+                            i++;
+                            <tr style="color:black; background-color:burlywood">
+                                <td class="text-center">@i</td>                        
+                                <td class="text-center"><a href="@Url.Action("DetailsItem", "HomePage", new { id =item.ItemId })" style="color:darkblue">@item.ItemName</a></td>
+                                <td class="text-center">@item.Quentity</td>
+                                <td class="text-center">@item.Tot_price</td>
+                                <td class="text-center"><a href="@Url.Action("DeleteCartItem", "HomePage", new { id = item.ItemId })" class="elements btn btn-primary">Delete</a></td>
+                            </tr>
+
+                        }
+
+
+
+
+
+
+                    }
+
+
+
+
+                </table>
+
+                        //  <caption>Where</caption>
+
+                        <hr />
+                        <hr />
+                        <hr />
+                        <hr />
+                        <hr />
+                        <h4>Total Price : @totalPrice</h4>
+                        <h3>Delevery Type:</h3>
+                        <div class="col-md-6">
+                           
+                            
+                              @{  List<SelectListItem> listItems = new List<SelectListItem>();
+
+                                  listItems.Add(new SelectListItem
+                                  {
+                                      Text = "Online",
+                                      Value = "Online",
+                                      Selected = true
+                                  });
+                                  listItems.Add(new SelectListItem
+                                  {
+                                      Text = "OnPlace",
+                                      Value = "OnPlace",
+
+                                  });
+
+                                using (Html.BeginForm("MakeOrder", "HomePage", FormMethod.Post))
+                                {
+                                    @Html.DropDownListFor(m => m.online_Onplase, listItems, "-- Select Status --")
+                                    <hr />
+
+                                    @Html.TextAreaFor(m =>m.Address, new { @class = "form-control", @placeholder = "Address" })
+                                    <hr />
+                                    <hr />
+                                    <button class="btn btn-danger"><span class="glyphicon glyphicon-eye-open"></span>Order Now</button>
+
+
+
+                                }
+
+
+
+                                
+                              }
+                        </div>
+
+                       @* <div>
+                            <a href="@Url.Action("MakeOrder", "HomePage")" class="elements btn btn-success">
+                                <span class="glyphicon glyphicon-eye-open"></span>Order Now
+                            </a>
+                        </div>*@
+
+
+
+
+
+                        }
+                        else
+                        {
+                            <h3>No Item Found</h3>
+
+                        }
+
+        </div>
+
+
+
+
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+
+
+
+

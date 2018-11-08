@@ -1,0 +1,101 @@
+﻿@model RestaurantManagement.Models.RegistrationViewModel
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+
+        <hr />
+        <hr />
+        <div class="panel panel-default">
+            <div class="panel-danger">
+                <div class="panel-heading">
+                    <h2>WELCOME, PLEASE SIGN IN</h2>
+
+                </div>
+                <div class="panel-body">
+                    <form id="LoginForm">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email Id" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <a href="#" class="elements btn btn-primary" onclick="LoginUser()">
+                                    <h3>Login</h3>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+
+
+
+<script>
+
+    var LoginUser = function () {
+        debugger
+        var data = $("#LoginForm").serialize();
+
+        $.ajax({
+            type: "Post",
+            url: "/HomePage/LoginCustomer",
+            data: data,
+            success: function (response) {
+                debugger
+                if (response == "fail")
+                {
+                    window.location.href = "/HomePage/Login";
+                } else {
+                    window.location.href = "/HomePage/Index";
+                }
+
+            }
+
+
+
+        })
+
+
+
+    }
+
+</script>

@@ -1,0 +1,97 @@
+﻿@model RestaurantManagement.Models.ItemViewModel
+
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "DetailsItem";
+}
+
+@{var quantity = 1;
+
+}
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+        @{ Html.RenderAction("SideMenu", "HomePage");}
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+        <div class="panel panel-body">
+
+            @{
+                if (Model != null)
+                {
+                    <div class="thumbnail">
+                        @if (Model.image == null)
+                        {
+                            <img src="~/Content/Foods/barger2.jpg" class="img-responsive" />
+                        }
+                        else
+                        {
+                            var base64 = Convert.ToBase64String(Model.image);
+                            var imgSrc = String.Format("data:image/jpg;base64,{0}", base64);
+
+                            <img  src='@imgSrc' class="img-responsive"/>
+                        }
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="caption">
+                            <h2 style="color:blueviolet">@Model.Name</h2>
+                            <h3 style="color:crimson">Price   : @Model.Price</h3>
+                            <h3>Stack   : Available</h3>
+                            
+                            <div class="panel panel-body">
+                                @using (Html.BeginForm("ShopingCart", "HomePage", new { Id = Model.Id.ToString() }, FormMethod.Post))
+                                {
+                                    @Html.Label("Quanity :  ",null,new { @class="btn btn-primary"})
+                                    @Html.TextBox("quentity")
+
+                                    <button class="btn btn-danger"><span class="glyphicon glyphicon-eye-open"></span>Add in Cart</button>
+
+
+
+                                }
+                               
+                            </div>
+
+
+
+                        </div>
+                        <div class="panel-heading">
+                            <h2 style="color:blue;text-decoration-line:overline">Product Information</h2>
+
+                        </div>
+                        <div class="panel-body">
+                            <h3>@Model.Description</h3>
+
+                        </div>
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="panel panel-body">
+                        <h2>No Product Select</h2>
+
+                    </div>
+                }
+            }
+
+
+        </div>
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RestaurantManagement.Models.TableReservationDetailsViewModel>
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewBag.Title = "ReservationDetails";
+}
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+
+      @*  @{ Html.RenderAction("SideMenu", "HomePage");}*@
+
+       
+        <a href="@Url.Action("TableDetailsShow", "Reservation")" class="elements btn btn-danger">
+
+            <img src="~/Content/FirstPage Menu/table22.jpg" class="img-responsive" />
+            <h2>All Table Details</h2>
+        </a>
+
+    </div>
+    <div class="col-md-6">
+        @*Body Start*@
+
+        @{ 
+            if(Model.Count()>0)
+            {
+                int i = 0;
+                <table class="table table-bordered table-hover">
+                    <tr style="color:white; background-color:crimson;">
+                        <th class="text-center">NO</th>
+                        <th class="text-center">Capacity</th>
+                    </tr>
+                    @foreach(var item in Model)
+                    {
+                        i += 1;
+                        <tr style="color:black; background-color:burlywood">
+                            <td class="text-center">@i</td>
+                            <td class="text-center">@item.Capacity</td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <h2>No item found</h2>
+            }
+        }
+
+
+
+        @*Body Finished*@
+    </div>
+    <div class="col-md-3">
+        @{ Html.RenderAction("RightSideMenu", "HomePage");}
+
+    </div>
+</div>
+
